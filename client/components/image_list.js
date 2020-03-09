@@ -10,8 +10,9 @@ const IMAGES = [
 ];
 
 // create our component
-const ImageList = () => {
-  const RenderedImages = IMAGES.map(image => 
+const ImageList = (props) => {
+  const validImage = props.images.filter(image => !image.is_album)
+  const RenderedImages = validImage.map(image => 
     <ImageDetail key={image.title} image={image} />
   );
   return <ul className="media-list list-group">{RenderedImages}</ul>;

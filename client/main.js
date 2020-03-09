@@ -11,21 +11,30 @@ import ImageList from "./components/image_list";
 
 //create a component
 class App extends Component {
+  state = {
+    images: []
+  }
   componentWillMount = () => {
     console.log("555555555555");
     axios
       .get("https://api.imgur.com/3/gallery/hot/viral/0.json")
       .then(result => {
-        console.log(result.data);
+        // console.log(result.data);
+        // this.render()
+        this.setState({
+          images: result.data.data
+        })
       })
       .catch(err => {
         console.log(message.err);
       });
   };
   render() {
+    console.log("render images", this.state.images);
+
     return (
       <div>
-        <ImageList />
+        <ImageList images={this.state.images} />
       </div>
     );
   }
