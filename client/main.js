@@ -13,7 +13,7 @@ import ImageList from "./components/image_list";
 class App extends Component {
   state = {
     images: []
-  }
+  };
   componentWillMount = () => {
     console.log("555555555555");
     axios
@@ -23,7 +23,7 @@ class App extends Component {
         // this.render()
         this.setState({
           images: result.data.data
-        })
+        });
       })
       .catch(err => {
         console.log(message.err);
